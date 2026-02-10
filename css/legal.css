@@ -92,9 +92,9 @@
 }
 .download-options {
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   background: var(--off-white);
-  border-radius: 8px;
+  border-radius: 20px;
   display: flex;
   gap: 1rem;
   align-items: center;
