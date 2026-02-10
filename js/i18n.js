@@ -1,7 +1,6 @@
 (() => {
   let currentLanguage =
     localStorage.getItem("selectedLanguage") || getDetectedLanguage();
-
   function getDetectedLanguage() {
     const browserLang = navigator.language || navigator.userLanguage;
     const lang = browserLang.split("-")[0];
@@ -20,7 +19,6 @@
     ];
     return supported.includes(lang) ? lang : "en";
   }
-
   async function loadTranslations(lang) {
     try {
       const response = await fetch(`./lang/${lang}.json`);
@@ -30,10 +28,8 @@
       return null;
     }
   }
-
   function applyTranslations(translations) {
     if (!translations) return;
-
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       const value = getNestedValue(translations, key);
@@ -44,17 +40,13 @@
         el.textContent = value;
       }
     });
-
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
       const key = el.getAttribute("data-i18n-placeholder");
       const value = getNestedValue(translations, key);
       if (value) el.placeholder = value;
     });
-
-    // Mark page as ready for i18n - makes translatable content visible
     document.documentElement.classList.add("i18n-ready");
   }
-
   function translateModals(translations) {
     const modalMap = {
       "brand-identity-modal": "modals.brandIdentity",
@@ -73,7 +65,6 @@
       "imprint-modal": "modals.imprint",
       "privacy-modal": "modals.privacy",
     };
-
     Object.entries(modalMap).forEach(([id, path]) => {
       const modal = document.getElementById(id);
       if (!modal) return;
@@ -82,18 +73,14 @@
       if (h1 && title) h1.textContent = title;
     });
   }
-
   function getNestedValue(obj, path) {
     return path.split(".").reduce((o, p) => o?.[p], obj);
   }
-
   function applyLanguageTypography(lang) {
     document.documentElement.lang = lang;
-
     document.documentElement.style.wordBreak = "";
     document.documentElement.style.hyphens = "";
     document.documentElement.style.overflowWrap = "break-word";
-
     if (lang === "zh" || lang === "ja") {
       document.documentElement.style.wordBreak = "break-all";
       document.documentElement.style.hyphens = "none";
@@ -105,7 +92,6 @@
       document.documentElement.style.hyphens = "auto";
     }
   }
-
   async function switchLanguage(lang) {
     currentLanguage = lang;
     localStorage.setItem("selectedLanguage", lang);
@@ -113,18 +99,15 @@
     const translations = await loadTranslations(lang);
     applyTranslations(translations);
     updateLanguageButton();
-
     if (lang === "en") {
       window.location.reload();
     }
   }
-
   function updateLanguageButton() {
     document.querySelectorAll(".lang-option").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.lang === currentLanguage);
     });
   }
-
   document.querySelectorAll(".lang-option").forEach((option) => {
     option.addEventListener("click", (e) => {
       e.preventDefault();
@@ -132,7 +115,6 @@
       switchLanguage(lang);
     });
   });
-
   (async () => {
     applyLanguageTypography(currentLanguage);
     updateLanguageButton();

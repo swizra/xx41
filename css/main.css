@@ -1,32 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap");
-
 html:not(.i18n-ready) [data-i18n] {
   opacity: 0;
   visibility: hidden;
 }
-
-/* Fallback: Show all content after 1 second if i18n hasn't loaded */
 html:not(.i18n-ready) {
   animation: showContentFallback 1s forwards;
 }
 
 @keyframes showContentFallback {
   0% {
-    /* hidden */
   }
   99% {
-    /* still hidden */
   }
   100% {
-    /* show everything */
   }
 }
-
-/* Force visible after animation */
 html:not(.i18n-ready) [data-i18n] {
   animation: forceVisible 1s forwards;
 }
-
 @keyframes forceVisible {
   0% {
     opacity: 0;
@@ -41,7 +32,6 @@ html:not(.i18n-ready) [data-i18n] {
     visibility: visible !important;
   }
 }
-
 html {
   overflow-wrap: break-word;
   word-break: normal;
@@ -735,12 +725,10 @@ footer {
   margin-left: -0.04em;
   color: var(--black);
 }
-
 html.dark-mode .footer-logo-giant,
 body.dark-mode .footer-logo-giant {
   color: var(--black);
 }
-
 html.light-mode .footer-logo-giant,
 body.light-mode .footer-logo-giant {
   color: var(--black);
