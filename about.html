@@ -1,0 +1,506 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title data-i18n="pageTitles.about">About - KEFE STUDIO</title>
+    <meta
+      name="description"
+      content="About KEFE - Strategic design and consulting studio based in Switzerland"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="canonical" href="https://kefe.ch/about.html" />
+
+    <meta property="og:title" content="About - KEFE" />
+    <meta
+      property="og:description"
+      content="About KEFE - Strategic design and consulting studio"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kefe.ch/about.html" />
+    <meta property="og:image" content="https://kefe.ch/images/og-image.svg" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="About - KEFE" />
+    <meta
+      name="twitter:description"
+      content="About KEFE - Strategic design and consulting studio"
+    />
+    <meta name="twitter:creator" content="@swizra" />
+    <meta name="robots" content="index, follow" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0a0a0a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="/images/favicons/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="icon"
+      sizes="16x16"
+      href="/images/favicons/favicon-16.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      sizes="32x32"
+      href="/images/favicons/favicon-32.svg"
+      type="image/svg+xml"
+    />
+    <link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/legal.css" />
+    <script>
+      // Apply theme immediately to prevent flicker on page load
+      (() => {
+        const theme = localStorage.getItem("theme") || "auto";
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const systemPrefersDark = () => mediaQuery.matches;
+
+        document.documentElement.classList.add(
+          theme === "auto"
+            ? systemPrefersDark()
+              ? "dark-mode"
+              : "light-mode"
+            : theme,
+        );
+      })();
+    </script>
+    <script>
+      // Pre-load i18n to prevent English text flicker
+      (() => {
+        async function getDetectedLanguage() {
+          const browserLang = navigator.language || navigator.userLanguage;
+          const lang = browserLang.split("-")[0];
+          const supported = [
+            "en",
+            "de",
+            "fr",
+            "it",
+            "es",
+            "pt",
+            "ja",
+            "ru",
+            "uk",
+            "zh",
+            "hi",
+          ];
+          return supported.includes(lang) ? lang : "en";
+        }
+
+        async function loadTranslations(lang) {
+          try {
+            const response = await fetch(`./lang/${lang}.json`);
+            if (!response.ok) throw new Error();
+            return await response.json();
+          } catch {
+            return null;
+          }
+        }
+
+        function getNestedValue(obj, path) {
+          return path.split(".").reduce((o, p) => o?.[p], obj);
+        }
+
+        async function applyLanguage() {
+          const currentLanguage =
+            localStorage.getItem("selectedLanguage") ||
+            (await getDetectedLanguage());
+          const translations = await loadTranslations(currentLanguage);
+
+          if (!translations) {
+            document.documentElement.classList.add("i18n-ready");
+            return;
+          }
+
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            const value = getNestedValue(translations, key);
+            if (value === null || value === undefined) return;
+            if (el.getAttribute("data-i18n-html") === "true") {
+              el.innerHTML = value;
+            } else {
+              el.textContent = value;
+            }
+          });
+
+          document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-placeholder");
+            const value = getNestedValue(translations, key);
+            if (value) el.placeholder = value;
+          });
+
+          document.documentElement.classList.add("i18n-ready");
+        }
+
+        applyLanguage();
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">KEFE</a>
+      <nav class="desktop-nav">
+        <a href="/#strategy" class="desktop-nav-link" data-i18n="strategy.title"
+          >Strategy</a
+        >
+        <a href="/#design" class="desktop-nav-link" data-i18n="design.title"
+          >Design</a
+        >
+        <a href="/#scaling" class="desktop-nav-link" data-i18n="scaling.title"
+          >Scaling</a
+        >
+        <a
+          href="/#consulting"
+          class="desktop-nav-link"
+          data-i18n="consulting.title"
+          >Consulting</a
+        >
+        <a href="/#process" class="desktop-nav-link" data-i18n="process.title"
+          >Our Process</a
+        >
+        <a href="/#services" class="desktop-nav-link" data-i18n="services.title"
+          >Services</a
+        >
+      </nav>
+      <div class="header-right">
+        <a
+          href="/#consultation"
+          class="header-btn desktop-btn"
+          data-i18n="header.getStarted"
+          >Get Started</a
+        >
+
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav">
+        <a href="/#strategy" class="mobile-link" data-i18n="strategy.title"
+          >Strategy</a
+        >
+        <a href="/#design" class="mobile-link" data-i18n="design.title"
+          >Design</a
+        >
+        <a href="/#scaling" class="mobile-link" data-i18n="scaling.title"
+          >Scaling</a
+        >
+        <a href="/#consulting" class="mobile-link" data-i18n="consulting.title"
+          >Consulting</a
+        >
+        <a href="/#process" class="mobile-link" data-i18n="process.title"
+          >Our Process</a
+        >
+        <a href="/#services" class="mobile-link" data-i18n="services.title"
+          >Services</a
+        >
+        <a
+          href="/#consultation"
+          class="mobile-cta"
+          data-i18n="header.getStarted"
+          >Get Started</a
+        >
+      </nav>
+    </header>
+
+    <main class="legal-page">
+      <div class="legal-content">
+        <h1 data-i18n="modals.about.title">About KEFE</h1>
+        <p class="updated" data-i18n="modals.about.subtitle">
+          Strategic Design & Consulting Studio
+        </p>
+
+        <div class="highlight-box">
+          <p style="margin-bottom: 0">
+            <strong data-i18n="modals.about.introLabel">Our Mission:</strong>
+            <span data-i18n="modals.about.intro"></span>
+          </p>
+        </div>
+
+        <h2 data-i18n="modals.about.section1Title">Who We Are</h2>
+        <p data-i18n="modals.about.section1Text"></p>
+
+        <h2 data-i18n="modals.about.section2Title">What We Do</h2>
+        <p data-i18n="modals.about.section2Text"></p>
+        <ul>
+          <li data-i18n="modals.about.service1"></li>
+          <li data-i18n="modals.about.service2"></li>
+          <li data-i18n="modals.about.service3"></li>
+          <li data-i18n="modals.about.service4"></li>
+        </ul>
+
+        <h2 data-i18n="modals.about.section3Title">Our Approach</h2>
+        <p data-i18n="modals.about.section3Text"></p>
+
+        <h2 data-i18n="modals.about.section4Title">Why Choose KEFE</h2>
+        <ul>
+          <li data-i18n="modals.about.reason1"></li>
+          <li data-i18n="modals.about.reason2"></li>
+          <li data-i18n="modals.about.reason3"></li>
+          <li data-i18n="modals.about.reason4"></li>
+        </ul>
+
+        <h2 data-i18n="modals.about.section5Title">Get In Touch</h2>
+        <p>
+          <strong data-i18n="modals.about.contactName"></strong><br />
+          <span data-i18n="modals.about.contactAddress1"></span><br />
+          <span data-i18n="modals.about.contactAddress2"></span><br />
+          <span data-i18n="modals.about.contactAddress3"></span><br />
+          <br />
+          <span data-i18n="modals.about.contactPhone">Phone:</span>
+          <a href="tel:+41783514822">+41 78 351 48 22</a><br />
+          <span data-i18n="modals.about.contactEmail">Email:</span>
+          <a href="mailto:info@kefe.ch">info@kefe.ch</a>
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span data-i18n="footer.headquarters">Headquarters</span>
+            <span class="material-icons accordion-icon"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div class="accordion-content">
+            <p>4102 Binningen</p>
+            <p>Switzerland</p>
+            <div class="download-links" style="margin-top: 8px">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Ziegelweg+1+4102+Binningen+Switzerland"
+                target="_blank"
+                rel="noopener"
+                title="Open in Google Maps"
+                class="download-link-btn"
+                >Google Maps</a
+              >
+              <a
+                href="https://maps.apple.com/?q=Ziegelweg+1+4102+Binningen+Switzerland"
+                target="_blank"
+                rel="noopener"
+                title="Open in Apple Maps"
+                class="download-link-btn"
+                >Apple Maps</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span data-i18n="footer.contact">Contact</span>
+            <span class="material-icons accordion-icon"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div class="accordion-content">
+            <p>
+              <a href="mailto:info@kefe.ch" class="contact-email"
+                >info@kefe.ch</a
+              >
+            </p>
+            <p id="phone-number">
+              <a href="tel:+41783514822">+41 78 351 48 22</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span data-i18n="footer.social">Social Media</span>
+            <span class="material-icons accordion-icon"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div class="accordion-content">
+            <a href="https://wa.me/41783514822">WhatsApp</a>
+            <a href="https://t.me/kefestudio">Telegram</a>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span data-i18n="footer.legal">Legal</span>
+            <span class="material-icons accordion-icon"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="legal-item">
+              <a href="/terms.html" data-i18n="footer.terms"
+                >Terms & Conditions</a
+              >
+            </div>
+            <div class="legal-item">
+              <a href="/imprint.html" data-i18n="footer.imprint">Imprint</a>
+            </div>
+            <div class="legal-item">
+              <a href="/privacy.html" data-i18n="footer.privacy"
+                >Privacy Policy</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span data-i18n="footer.language">Language</span>
+            <span class="material-icons accordion-icon"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div class="accordion-content">
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="en"
+              onclick="event.preventDefault()"
+              >English <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="de"
+              onclick="event.preventDefault()"
+              >Deutsch <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="fr"
+              onclick="event.preventDefault()"
+              >Français <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="it"
+              onclick="event.preventDefault()"
+              >Italiano <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="es"
+              onclick="event.preventDefault()"
+              >Español <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="pt"
+              onclick="event.preventDefault()"
+              >Português <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="ja"
+              onclick="event.preventDefault()"
+              >日本語 <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="ru"
+              onclick="event.preventDefault()"
+              >Русский <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="uk"
+              onclick="event.preventDefault()"
+              >Українська <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="hi"
+              onclick="event.preventDefault()"
+              >हिन्दी <span class="lang-checkmark">✓</span></a
+            >
+            <a
+              href="#"
+              class="lang-option"
+              data-lang="zh"
+              onclick="event.preventDefault()"
+              >中文 <span class="lang-checkmark">✓</span></a
+            >
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span data-i18n="footer.theme">Theme</span>
+            <span class="material-icons accordion-icon"
+              >keyboard_arrow_down</span
+            >
+          </button>
+          <div class="accordion-content">
+            <a
+              href="#"
+              class="theme-option active"
+              data-theme="auto"
+              onclick="event.preventDefault()"
+            >
+              <span data-i18n="footer.themeAuto">Auto</span>
+              <span class="theme-checkmark">✓</span>
+            </a>
+            <a
+              href="#"
+              class="theme-option"
+              data-theme="light"
+              onclick="event.preventDefault()"
+            >
+              <span data-i18n="footer.themeLight">Light</span>
+              <span class="theme-checkmark">✓</span>
+            </a>
+            <a
+              href="#"
+              class="theme-option"
+              data-theme="dark"
+              onclick="event.preventDefault()"
+            >
+              <span data-i18n="footer.themeDark">Dark</span>
+              <span class="theme-checkmark">✓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-big-elements">
+        <div class="footer-logo-giant">KEFE</div>
+        <div class="legal-bar-giant">©<span id="year"></span></div>
+      </div>
+    </footer>
+
+    <div class="theme-fade" id="theme-fade"></div>
+    <script src="js/scroll-memory.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/accordion.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/consultation.js"></script>
+    <script src="js/downloads.js"></script>
+    <script src="js/i18n.js"></script>
+  </body>
+</html>
