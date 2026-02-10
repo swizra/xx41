@@ -63,21 +63,30 @@
   }
 
   window.downloadTerms = (format) => {
-    const element = document.querySelector("#terms-modal .modal-body");
+    let element = document.querySelector("#terms-modal .modal-body");
+    if (!element) {
+      element = document.querySelector("main.legal-page .legal-content");
+    }
     if (element && format === "txt")
       downloadElementAsTXT(element, "Terms-and-Conditions.txt");
     return false;
   };
 
   window.downloadImprint = (format) => {
-    const element = document.querySelector("#imprint-modal .modal-body");
+    let element = document.querySelector("#imprint-modal .modal-body");
+    if (!element) {
+      element = document.querySelector("main.legal-page .legal-content");
+    }
     if (element && format === "txt")
       downloadElementAsTXT(element, "Imprint.txt");
     return false;
   };
 
   window.downloadPrivacy = (format) => {
-    const element = document.querySelector("#privacy-modal .modal-body");
+    let element = document.querySelector("#privacy-modal .modal-body");
+    if (!element) {
+      element = document.querySelector("main.legal-page .legal-content");
+    }
     if (element && format === "txt")
       downloadElementAsTXT(element, "Privacy-Policy.txt");
     return false;
