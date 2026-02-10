@@ -1,4 +1,24 @@
 {
+  "pageTitle": "KEFE STUDIO - 戦略的デザイン・コンサルティング",
+  "pageTitles": {
+    "home": "KEFE STUDIO - 戦略的デザイン・コンサルティング",
+    "privacy": "プライバシーポリシー - KEFE STUDIO",
+    "terms": "利用規約 - KEFE STUDIO",
+    "imprint": "インプリント - KEFE STUDIO",
+    "error404": "404 - KEFE",
+    "gridStrategy": "戦略 - KEFE",
+    "gridDesign": "デザイン - KEFE",
+    "gridScaling": "スケーリング - KEFE",
+    "gridConsulting": "コンサルティング - KEFE",
+    "processDiscovery": "ディスカバリー - KEFE",
+    "processStrategy": "戦略 - KEFE",
+    "processExecution": "実行 - KEFE",
+    "processOptimization": "最適化 - KEFE",
+    "brandIdentity": "ブランドアイデンティティ - KEFE",
+    "digitalProducts": "デジタル製品 - KEFE",
+    "businessStrategy": "ビジネス戦略 - KEFE",
+    "consultingServices": "コンサルティングサービス - KEFE"
+  },
   "header": {
     "getStarted": "今すぐ開始"
   },

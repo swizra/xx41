@@ -1,4 +1,24 @@
 {
+  "pageTitle": "KEFE STUDIO - रणनीतिक डिजाइन और सलाह",
+  "pageTitles": {
+    "home": "KEFE STUDIO - रणनीतिक डिजाइन और सलाह",
+    "privacy": "गोपनीयता नीति - KEFE STUDIO",
+    "terms": "शर्तें और शर्तें - KEFE STUDIO",
+    "imprint": "प्रिंट - KEFE STUDIO",
+    "error404": "404 - KEFE",
+    "gridStrategy": "रणनीति - KEFE",
+    "gridDesign": "डिजाइन - KEFE",
+    "gridScaling": "स्केलिंग - KEFE",
+    "gridConsulting": "सलाह - KEFE",
+    "processDiscovery": "खोज - KEFE",
+    "processStrategy": "रणनीति - KEFE",
+    "processExecution": "निष्पादन - KEFE",
+    "processOptimization": "अनुकूलन - KEFE",
+    "brandIdentity": "ब्रांड पहचान - KEFE",
+    "digitalProducts": "डिजिटल उत्पाद - KEFE",
+    "businessStrategy": "व्यावसायिक रणनीति - KEFE",
+    "consultingServices": "परामर्श सेवाएं - KEFE"
+  },
   "header": {
     "getStarted": "शुरू करें"
   },

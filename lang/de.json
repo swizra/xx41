@@ -1,4 +1,24 @@
 {
+  "pageTitle": "KEFE STUDIO - Strategisches Design & Beratung",
+  "pageTitles": {
+    "home": "KEFE STUDIO - Strategisches Design & Beratung",
+    "privacy": "Datenschutzerklärung - KEFE STUDIO",
+    "terms": "Allgemeine Geschäftsbedingungen - KEFE STUDIO",
+    "imprint": "Impressum - KEFE STUDIO",
+    "error404": "404 - KEFE",
+    "gridStrategy": "Strategie - KEFE",
+    "gridDesign": "Design - KEFE",
+    "gridScaling": "Skalierung - KEFE",
+    "gridConsulting": "Beratung - KEFE",
+    "processDiscovery": "Entdeckung - KEFE",
+    "processStrategy": "Strategie - KEFE",
+    "processExecution": "Ausführung - KEFE",
+    "processOptimization": "Optimierung - KEFE",
+    "brandIdentity": "Markenidentität - KEFE",
+    "digitalProducts": "Digitale Produkte - KEFE",
+    "businessStrategy": "Geschäftsstrategie - KEFE",
+    "consultingServices": "Beratungsdienstleistungen - KEFE"
+  },
   "header": {
     "getStarted": "Jetzt starten"
   },

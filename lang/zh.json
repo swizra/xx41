@@ -1,4 +1,24 @@
 {
+  "pageTitle": "KEFE STUDIO - 战略设计和咨询",
+  "pageTitles": {
+    "home": "KEFE STUDIO - 战略设计和咨询",
+    "privacy": "隐私政策 - KEFE STUDIO",
+    "terms": "条款和条件 - KEFE STUDIO",
+    "imprint": "版权声明 - KEFE STUDIO",
+    "error404": "404 - KEFE",
+    "gridStrategy": "战略 - KEFE",
+    "gridDesign": "设计 - KEFE",
+    "gridScaling": "扩展 - KEFE",
+    "gridConsulting": "咨询 - KEFE",
+    "processDiscovery": "发现 - KEFE",
+    "processStrategy": "战略 - KEFE",
+    "processExecution": "执行 - KEFE",
+    "processOptimization": "优化 - KEFE",
+    "brandIdentity": "品牌身份 - KEFE",
+    "digitalProducts": "数字产品 - KEFE",
+    "businessStrategy": "商业策略 - KEFE",
+    "consultingServices": "咨询服务 - KEFE"
+  },
   "header": {
     "getStarted": "开始"
   },

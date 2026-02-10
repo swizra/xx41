@@ -1,4 +1,24 @@
 {
+  "pageTitle": "KEFE STUDIO - Стратегический дизайн и консультации",
+  "pageTitles": {
+    "home": "KEFE STUDIO - Стратегический дизайн и консультации",
+    "privacy": "Политика конфиденциальности - KEFE STUDIO",
+    "terms": "Условия использования - KEFE STUDIO",
+    "imprint": "Выходные данные - KEFE STUDIO",
+    "error404": "404 - KEFE",
+    "gridStrategy": "Стратегия - KEFE",
+    "gridDesign": "Дизайн - KEFE",
+    "gridScaling": "Масштабирование - KEFE",
+    "gridConsulting": "Консультации - KEFE",
+    "processDiscovery": "Открытие - KEFE",
+    "processStrategy": "Стратегия - KEFE",
+    "processExecution": "Исполнение - KEFE",
+    "processOptimization": "Оптимизация - KEFE",
+    "brandIdentity": "Фирменный стиль - KEFE",
+    "digitalProducts": "Цифровые продукты - KEFE",
+    "businessStrategy": "Бизнес-стратегия - KEFE",
+    "consultingServices": "Консультационные услуги - KEFE"
+  },
   "header": {
     "getStarted": "Начать"
   },
