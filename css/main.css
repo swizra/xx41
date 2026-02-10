@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap");
+
+/* Hide translatable content until i18n is ready to prevent English flicker */
+html:not(.i18n-ready) [data-i18n] {
+  opacity: 0;
+  visibility: hidden;
+}
+
 html {
   overflow-wrap: break-word;
   word-break: normal;
@@ -690,6 +697,16 @@ footer {
   font-weight: 900;
   line-height: 0.9;
   margin-left: -0.04em;
+  color: var(--black);
+}
+
+html.dark-mode .footer-logo-giant,
+body.dark-mode .footer-logo-giant {
+  color: var(--black);
+}
+
+html.light-mode .footer-logo-giant,
+body.light-mode .footer-logo-giant {
   color: var(--black);
 }
 .legal-bar-giant {

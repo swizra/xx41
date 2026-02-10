@@ -143,6 +143,76 @@
         );
       })();
     </script>
+    <script>
+      // Pre-load i18n to prevent English text flicker
+      (() => {
+        async function getDetectedLanguage() {
+          const browserLang = navigator.language || navigator.userLanguage;
+          const lang = browserLang.split("-")[0];
+          const supported = [
+            "en",
+            "de",
+            "fr",
+            "it",
+            "es",
+            "pt",
+            "ja",
+            "ru",
+            "uk",
+            "zh",
+            "hi",
+          ];
+          return supported.includes(lang) ? lang : "en";
+        }
+
+        async function loadTranslations(lang) {
+          try {
+            const response = await fetch(`./lang/${lang}.json`);
+            if (!response.ok) throw new Error();
+            return await response.json();
+          } catch {
+            return null;
+          }
+        }
+
+        function getNestedValue(obj, path) {
+          return path.split(".").reduce((o, p) => o?.[p], obj);
+        }
+
+        async function applyLanguage() {
+          const currentLanguage =
+            localStorage.getItem("selectedLanguage") ||
+            (await getDetectedLanguage());
+          const translations = await loadTranslations(currentLanguage);
+
+          if (!translations) {
+            document.documentElement.classList.add("i18n-ready");
+            return;
+          }
+
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            const value = getNestedValue(translations, key);
+            if (value === null || value === undefined) return;
+            if (el.getAttribute("data-i18n-html") === "true") {
+              el.innerHTML = value;
+            } else {
+              el.textContent = value;
+            }
+          });
+
+          document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-placeholder");
+            const value = getNestedValue(translations, key);
+            if (value) el.placeholder = value;
+          });
+
+          document.documentElement.classList.add("i18n-ready");
+        }
+
+        applyLanguage();
+      })();
+    </script>
   </head>
   <body>
     <header>
@@ -828,6 +898,7 @@
       </div>
     </footer>
     <div class="theme-fade" id="theme-fade"></div>
+    <script src="js/scroll-memory.js"></script>
     <script src="js/accordion.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/menu.js"></script>

@@ -50,6 +50,9 @@
       const value = getNestedValue(translations, key);
       if (value) el.placeholder = value;
     });
+
+    // Mark page as ready for i18n - makes translatable content visible
+    document.documentElement.classList.add("i18n-ready");
   }
 
   function translateModals(translations) {
