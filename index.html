@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
+      content="width=device-width, initial-scale=1"
     />
     <title data-i18n="pageTitles.home">
       KEFE STUDIO - Strategic Design & Consulting
@@ -213,6 +213,13 @@
         }
 
         applyLanguage();
+
+        // Fallback: Ensure page is visible within 500ms even if i18n fails
+        setTimeout(() => {
+          if (!document.documentElement.classList.contains("i18n-ready")) {
+            document.documentElement.classList.add("i18n-ready");
+          }
+        }, 500);
       })();
     </script>
   </head>
